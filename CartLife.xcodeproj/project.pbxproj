@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2187B2612150B70900868710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2187B2602150B70900868710 /* AppDelegate.swift */; };
+		2187B2632150B70900868710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2187B2622150B70900868710 /* ViewController.swift */; };
+		2187B2662150B70900868710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2187B2642150B70900868710 /* Main.storyboard */; };
+		2187B2682150B70C00868710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2187B2672150B70C00868710 /* Assets.xcassets */; };
+		2187B26B2150B70C00868710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2187B2692150B70C00868710 /* LaunchScreen.storyboard */; };
+		2187B2762150B70C00868710 /* CartLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2187B2752150B70C00868710 /* CartLifeTests.swift */; };
+		2187B2812150B70C00868710 /* CartLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2187B2802150B70C00868710 /* CartLifeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2187B2722150B70C00868710 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2187B2552150B70900868710 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2187B25C2150B70900868710;
+			remoteInfo = CartLife;
+		};
+		2187B27D2150B70C00868710 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2187B2552150B70900868710 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2187B25C2150B70900868710;
+			remoteInfo = CartLife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2187B25D2150B70900868710 /* CartLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CartLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2187B2602150B70900868710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2187B2622150B70900868710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2187B2652150B70900868710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2187B2672150B70C00868710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2187B26A2150B70C00868710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2187B26C2150B70C00868710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2187B2712150B70C00868710 /* CartLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2187B2752150B70C00868710 /* CartLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartLifeTests.swift; sourceTree = "<group>"; };
+		2187B2772150B70C00868710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2187B27C2150B70C00868710 /* CartLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2187B2802150B70C00868710 /* CartLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartLifeUITests.swift; sourceTree = "<group>"; };
+		2187B2822150B70C00868710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2187B25A2150B70900868710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B26E2150B70C00868710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B2792150B70C00868710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2187B2542150B70900868710 = {
+			isa = PBXGroup;
+			children = (
+				2187B25F2150B70900868710 /* CartLife */,
+				2187B2742150B70C00868710 /* CartLifeTests */,
+				2187B27F2150B70C00868710 /* CartLifeUITests */,
+				2187B25E2150B70900868710 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2187B25E2150B70900868710 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2187B25D2150B70900868710 /* CartLife.app */,
+				2187B2712150B70C00868710 /* CartLifeTests.xctest */,
+				2187B27C2150B70C00868710 /* CartLifeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2187B25F2150B70900868710 /* CartLife */ = {
+			isa = PBXGroup;
+			children = (
+				2187B2602150B70900868710 /* AppDelegate.swift */,
+				2187B2622150B70900868710 /* ViewController.swift */,
+				2187B2642150B70900868710 /* Main.storyboard */,
+				2187B2672150B70C00868710 /* Assets.xcassets */,
+				2187B2692150B70C00868710 /* LaunchScreen.storyboard */,
+				2187B26C2150B70C00868710 /* Info.plist */,
+			);
+			path = CartLife;
+			sourceTree = "<group>";
+		};
+		2187B2742150B70C00868710 /* CartLifeTests */ = {
+			isa = PBXGroup;
+			children = (
+				2187B2752150B70C00868710 /* CartLifeTests.swift */,
+				2187B2772150B70C00868710 /* Info.plist */,
+			);
+			path = CartLifeTests;
+			sourceTree = "<group>";
+		};
+		2187B27F2150B70C00868710 /* CartLifeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2187B2802150B70C00868710 /* CartLifeUITests.swift */,
+				2187B2822150B70C00868710 /* Info.plist */,
+			);
+			path = CartLifeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2187B25C2150B70900868710 /* CartLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2187B2852150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLife" */;
+			buildPhases = (
+				2187B2592150B70900868710 /* Sources */,
+				2187B25A2150B70900868710 /* Frameworks */,
+				2187B25B2150B70900868710 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CartLife;
+			productName = CartLife;
+			productReference = 2187B25D2150B70900868710 /* CartLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2187B2702150B70C00868710 /* CartLifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2187B2882150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLifeTests" */;
+			buildPhases = (
+				2187B26D2150B70C00868710 /* Sources */,
+				2187B26E2150B70C00868710 /* Frameworks */,
+				2187B26F2150B70C00868710 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2187B2732150B70C00868710 /* PBXTargetDependency */,
+			);
+			name = CartLifeTests;
+			productName = CartLifeTests;
+			productReference = 2187B2712150B70C00868710 /* CartLifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2187B27B2150B70C00868710 /* CartLifeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2187B28B2150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLifeUITests" */;
+			buildPhases = (
+				2187B2782150B70C00868710 /* Sources */,
+				2187B2792150B70C00868710 /* Frameworks */,
+				2187B27A2150B70C00868710 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2187B27E2150B70C00868710 /* PBXTargetDependency */,
+			);
+			name = CartLifeUITests;
+			productName = CartLifeUITests;
+			productReference = 2187B27C2150B70C00868710 /* CartLifeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2187B2552150B70900868710 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Ravi Dubey";
+				TargetAttributes = {
+					2187B25C2150B70900868710 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					2187B2702150B70C00868710 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 2187B25C2150B70900868710;
+					};
+					2187B27B2150B70C00868710 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 2187B25C2150B70900868710;
+					};
+				};
+			};
+			buildConfigurationList = 2187B2582150B70900868710 /* Build configuration list for PBXProject "CartLife" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2187B2542150B70900868710;
+			productRefGroup = 2187B25E2150B70900868710 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2187B25C2150B70900868710 /* CartLife */,
+				2187B2702150B70C00868710 /* CartLifeTests */,
+				2187B27B2150B70C00868710 /* CartLifeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2187B25B2150B70900868710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2187B26B2150B70C00868710 /* LaunchScreen.storyboard in Resources */,
+				2187B2682150B70C00868710 /* Assets.xcassets in Resources */,
+				2187B2662150B70900868710 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B26F2150B70C00868710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B27A2150B70C00868710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2187B2592150B70900868710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2187B2632150B70900868710 /* ViewController.swift in Sources */,
+				2187B2612150B70900868710 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B26D2150B70C00868710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2187B2762150B70C00868710 /* CartLifeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2187B2782150B70C00868710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2187B2812150B70C00868710 /* CartLifeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2187B2732150B70C00868710 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2187B25C2150B70900868710 /* CartLife */;
+			targetProxy = 2187B2722150B70C00868710 /* PBXContainerItemProxy */;
+		};
+		2187B27E2150B70C00868710 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2187B25C2150B70900868710 /* CartLife */;
+			targetProxy = 2187B27D2150B70C00868710 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2187B2642150B70900868710 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2187B2652150B70900868710 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2187B2692150B70C00868710 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2187B26A2150B70C00868710 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2187B2832150B70C00868710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2187B2842150B70C00868710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2187B2862150B70C00868710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2187B2872150B70C00868710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLife/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLife;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2187B2892150B70C00868710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CartLife.app/CartLife";
+			};
+			name = Debug;
+		};
+		2187B28A2150B70C00868710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CartLife.app/CartLife";
+			};
+			name = Release;
+		};
+		2187B28C2150B70C00868710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CartLife;
+			};
+			name = Debug;
+		};
+		2187B28D2150B70C00868710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CartLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.CartLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CartLife;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2187B2582150B70900868710 /* Build configuration list for PBXProject "CartLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2187B2832150B70C00868710 /* Debug */,
+				2187B2842150B70C00868710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2187B2852150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2187B2862150B70C00868710 /* Debug */,
+				2187B2872150B70C00868710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2187B2882150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2187B2892150B70C00868710 /* Debug */,
+				2187B28A2150B70C00868710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2187B28B2150B70C00868710 /* Build configuration list for PBXNativeTarget "CartLifeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2187B28C2150B70C00868710 /* Debug */,
+				2187B28D2150B70C00868710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2187B2552150B70900868710 /* Project object */;
+}
