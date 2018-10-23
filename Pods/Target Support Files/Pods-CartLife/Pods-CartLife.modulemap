@@ -1,0 +1,6 @@
+framework module Pods_CartLife {
+  umbrella header "Pods-CartLife-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_CartLifeTests {
+  umbrella header "Pods-CartLifeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

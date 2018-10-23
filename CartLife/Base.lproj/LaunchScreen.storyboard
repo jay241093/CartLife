@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +15,67 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash_screen" translatesAutoresizingMaskIntoConstraints="NO" id="8bN-9F-oC1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="se8-bz-kVW">
+                                <rect key="frame" x="9" y="24" width="302" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is &quot;Cart Life&quot; This is Our Life" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkg-rm-sbF">
+                                        <rect key="frame" x="36" y="3" width="231" height="85"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="231" id="BLb-Oe-S0S"/>
+                                            <constraint firstAttribute="height" constant="85" id="hEY-XC-oFj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peachtree City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hib-eM-84H">
+                                        <rect key="frame" x="36" y="88" width="231" height="55"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="231" id="70t-vF-GzH"/>
+                                            <constraint firstAttribute="height" constant="55" id="sNx-TF-c8V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.68993471750000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Hib-eM-84H" firstAttribute="top" secondItem="fkg-rm-sbF" secondAttribute="bottom" id="4NY-Gu-DYQ"/>
+                                    <constraint firstAttribute="width" constant="302" id="AJI-7y-LH6"/>
+                                    <constraint firstItem="fkg-rm-sbF" firstAttribute="centerX" secondItem="se8-bz-kVW" secondAttribute="centerX" id="Ppt-I5-n4H"/>
+                                    <constraint firstAttribute="height" constant="150" id="SuR-oi-M2X"/>
+                                    <constraint firstItem="fkg-rm-sbF" firstAttribute="leading" secondItem="Hib-eM-84H" secondAttribute="leading" id="rDh-Am-G2M"/>
+                                    <constraint firstItem="fkg-rm-sbF" firstAttribute="top" secondItem="se8-bz-kVW" secondAttribute="top" constant="3" id="tkD-Be-o4i"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="se8-bz-kVW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="3UL-e0-3DP"/>
+                            <constraint firstItem="8bN-9F-oC1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="NGd-5q-DC4"/>
+                            <constraint firstItem="8bN-9F-oC1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YaS-nJ-NeR"/>
+                            <constraint firstItem="se8-bz-kVW" firstAttribute="centerX" secondItem="8bN-9F-oC1" secondAttribute="centerX" id="Zxm-cB-5wH"/>
+                            <constraint firstItem="8bN-9F-oC1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="eHd-vt-C0y"/>
+                            <constraint firstAttribute="trailing" secondItem="8bN-9F-oC1" secondAttribute="trailing" id="lVH-qf-6B3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="50.625" y="373.94366197183098"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Splash_screen" width="3024" height="4032"/>
+    </resources>
 </document>
