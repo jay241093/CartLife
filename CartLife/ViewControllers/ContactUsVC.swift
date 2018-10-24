@@ -141,7 +141,7 @@ class ContactUsVC: UIViewController , UITextViewDelegate{
                             self.textview.text = ""
 
 
-                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"thank you for connecting with us we will shortly get back to you.")
+                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Thank you for connecting with us we will shortly get back to you.")
                             self.present(alert, animated: true, completion: nil)
                         }
                         else

@@ -14,6 +14,7 @@ class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegat
 
     @IBOutlet weak var mapview: GMSMapView!
     
+    @IBOutlet weak var lbltime: UILabel!
     var locationManager = CLLocationManager()
 
     var sourceCord = CLLocationCoordinate2D()
@@ -90,12 +91,12 @@ class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegat
         if(isfromsave == 1)
         {
             btnadd.isHidden = true
-
+lbltime.isHidden = true
         }
         else
         {
             setLocation()
-
+            lbltime.isHidden = false
             btnadd.isHidden = false
             scheduledTimerWithTimeInterval()
         }
@@ -239,6 +240,8 @@ class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegat
                     let firstLegDistanceDict = firstLeg["distance"]
                     let firstLegDistance = firstLegDistanceDict["text"]
                     
+                    self.lbltime.text = String(describing: firstLegDuration)
+
                     var bounds = GMSCoordinateBounds()
                     
                     bounds = bounds.includingCoordinate(self.sourceCord)
