@@ -297,7 +297,7 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func placeAutocomplete(text:String) {
         let filter = GMSAutocompleteFilter()
-        filter.type = .city
+        filter.type = .noFilter
         
         placesClient?.autocompleteQuery(text, bounds: nil, filter: filter, callback: {(results, error) -> Void in   //unable to enter in this block
             if let error = error {
