@@ -22,9 +22,9 @@ struct RegisterResponse: Codable {
 }
 
 struct DataClass1: Codable {
-    let name, email, password: String
-    let roleID, regType: Int
-    let deviceID, updatedAt, createdAt: String
+    let name, email, password: String?
+    let roleID, regType: Int?
+    let deviceID, updatedAt, createdAt: String?
     let id: Int?
     
     enum CodingKeys: String, CodingKey {

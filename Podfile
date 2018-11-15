@@ -10,13 +10,16 @@ target 'CartLife' do
       pod 'GoogleMaps'
   pod 'GooglePlaces', '~> 2.1'
  pod 'SwiftyJSON', '~> 4.0'
-   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
    pod 'FloatRatingView', '~> 2.0.0'
    pod 'IQKeyboardManagerSwift', '5.0.0'
    pod 'PKHUD'
    pod 'SDWebImage', '~> 4.0'
     pod 'Firebase/Core'
    pod 'Firebase/Messaging'
+   pod 'MapboxNavigation'
+   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'alamofire5'
+
+
 
 
   # Pods for CartLife

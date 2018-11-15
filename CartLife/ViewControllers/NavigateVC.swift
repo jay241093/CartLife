@@ -10,7 +10,12 @@ import UIKit
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
-class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegate {
+import Mapbox
+import MapboxCoreNavigation
+import MapboxNavigation
+import MapboxDirections
+
+class NavigateVC: UIViewController, CLLocationManagerDelegate, UITextViewDelegate {
 
     @IBOutlet weak var mapview: GMSMapView!
     
@@ -23,13 +28,17 @@ class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegat
     @IBOutlet weak var btnadd: UIButton!
     @IBOutlet weak var innerview: UIView!
     @IBOutlet weak var txttitle: UITextField!
-    
+    @IBOutlet weak var btnnavigate: UIButton!
+
     @IBOutlet weak var txtmessage: UITextView!
     var isfromsave = 0
-
+    var directionsRoute: Route?
+   
+ 
     @IBAction func closeaction(_ sender: Any) {
         innerview.isHidden = true
     }
+    
     
     var timer = Timer()
 
@@ -85,29 +94,50 @@ class NavigateVC: UIViewController, UITextViewDelegate, CLLocationManagerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+     
         txtmessage.text = "Enter Message"
 
         txtmessage.delegate = self
         if(isfromsave == 1)
         {
-            btnadd.isHidden = true
+      
 lbltime.isHidden = true
         }
         else
         {
             setLocation()
             lbltime.isHidden = false
-            btnadd.isHidden = false
             scheduledTimerWithTimeInterval()
         }
         
-  
-        txtmessage.text = ""
         
         webservices.sharedInstance.PaddingTextfiled(textfield:txttitle)
-        txtmessage.delegate = self
- drawPath()
+        drawPath()
         // Do any additional setup after loading the view.
+  
+    }
+    
+    @IBAction func navigateaction(_ sender: Any) {
+        
+        if(btnnavigate.imageView?.image == #imageLiteral(resourceName: "navigation"))
+        {
+            calculateRoute(from: sourceCord, to: destCord) { (route, error) in
+            }
+            btnnavigate.setImage(#imageLiteral(resourceName: "plus-circle-solid.png"), for: .normal)
+            //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            //
+            //        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigateVC") as! NavigateVC
+            //        nextViewController.sourceCord = self.newsourceCord
+            //        nextViewController.destCord = self.newdestCord
+            //        self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+        else
+        {
+            innerview.isHidden = false
+        }
+     
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -193,7 +223,7 @@ lbltime.isHidden = true
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        self.sourceCord = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude:  (locations.last?.coordinate.longitude)!)
+//        self.sourceCord = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude:  (locations.last?.coordinate.longitude)!)
     }
     
     
@@ -272,8 +302,7 @@ lbltime.isHidden = true
     {
         if webservices().isConnectedToNetwork() == true
         {
-            
-            webservices().StartSpinner()
+           webservices().StartSpinner()
             
             Alamofire.request(webservices().baseurl + "sendnotification", method: .post, parameters:["user_id":UserDefaults.standard.value(forKey: "userid") as! Int,"title":txttitle.text,"message":txtmessage.text] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 
@@ -317,7 +346,25 @@ lbltime.isHidden = true
         
     }
     
-    
+    // Calculate route to be used for navigation
+    func calculateRoute(from origin: CLLocationCoordinate2D,
+                        to destination: CLLocationCoordinate2D,
+                        completion: @escaping (Route?, Error?) -> ()) {
+        
+        // Coordinate accuracy is the maximum distance away from the waypoint that the route may still be considered viable, measured in meters. Negative values indicate that a indefinite number of meters away from the route and still be considered viable.
+        let origin = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Start")
+        let destination = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Finish")
+        
+        // Specify that the route is intended for automobiles avoiding traffic
+        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
+        // Generate the route object and draw it on the map
+        _ = Directions.shared.calculate(options) { [unowned self] (waypoints, routes, error) in
+            self.directionsRoute = routes?.first
+           // self.drawRoute(route: self.directionsRoute!)
+            let navigationViewController = NavigationViewController(for: self.directionsRoute!)
+            self.present(navigationViewController, animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

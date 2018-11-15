@@ -25,7 +25,8 @@ class LoginVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCont
     @IBOutlet weak var txtpassword: UITextField!
     
     var reg_type = 0
-    
+    var imageView1  = UIImageView()
+    var iconClick = true
     @IBAction func signupacction(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -89,7 +90,7 @@ class LoginVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setrightview(textfield: txtpassword)
         
         if(UserDefaults.standard.object(forKey:"userid") != nil)
         {
@@ -269,7 +270,6 @@ class LoginVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCont
                 switch response.result{
                     
                 case .success(let resp):
-                    print(resp)
                     webservices().StopSpinner()
                     if(resp.errorCode == 0)
                     {
@@ -290,7 +290,7 @@ class LoginVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCont
                         let alert = webservices.sharedInstance.AlertBuilder(title: "", message: resp.message)
                         self.present(alert, animated: true, completion: nil)
                     }
-                    else if(resp.message.contains("The email has already been taken."))
+                    else if(resp.message.contains("Email has already been taken"))
                     {
                         
                         self.apilogincall(email:email, password:"")
@@ -316,6 +316,55 @@ class LoginVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCont
             
             webservices.sharedInstance.nointernetconnection()
             NSLog("No Internet Connection")
+        }
+        
+    }
+    
+    func setrightview(textfield: UITextField)
+    {
+        textfield.contentMode = .scaleAspectFit
+        
+        //        let imageView = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+        //        imageView.isUserInteractionEnabled = true
+        //        imageView.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+        //        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+        //
+        //        view.addSubview(imageView)
+        //        textfield.rightViewMode = UITextFieldViewMode.always
+        //
+        //        textfield.rightView = view
+        if(textfield == txtpassword)
+        {
+            
+            imageView1 = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid (2)"))
+            imageView1.isUserInteractionEnabled = true
+            imageView1.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+            let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+            
+            view.addSubview(imageView1)
+            textfield.rightViewMode = UITextFieldViewMode.always
+            
+            textfield.rightView = view
+            let T1 = UITapGestureRecognizer()
+            
+            T1.addTarget(self, action: #selector(showpass))
+            imageView1.addGestureRecognizer(T1)
+        }
+        
+        
+    }
+    
+    
+    @objc func showpass()
+    {
+        if(iconClick == true) {
+            imageView1.image = #imageLiteral(resourceName: "eye-solid (1)")
+            txtpassword.isSecureTextEntry = false
+            iconClick = false
+        } else {
+            imageView1.image = #imageLiteral(resourceName: "eye-slash-solid (2)")
+            txtpassword.isSecureTextEntry = true
+            iconClick = true
         }
         
     }

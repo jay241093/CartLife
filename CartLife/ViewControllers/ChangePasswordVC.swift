@@ -14,7 +14,14 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var txtoldpwd: UITextField!
     @IBOutlet weak var txtnewpwd: UITextField!
     @IBOutlet weak var txtretypenew: UITextField!
-    
+    var imageView1  = UIImageView()
+    var imageView2  = UIImageView()
+    var imageView3  = UIImageView()
+
+    var iconClick = true
+    var iconClick1 = true
+    var iconClick2 = true
+
     
     @IBAction func submitaction(_ sender: Any) {
         
@@ -79,6 +86,9 @@ class ChangePasswordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setrightview(textfield: txtoldpwd)
+        setrightview(textfield: txtnewpwd)
+        setrightview(textfield: txtretypenew)
         webservices.sharedInstance.setShadow(view: mainview)
         webservices.sharedInstance.PaddingTextfiled(textfield:txtoldpwd)
         webservices.sharedInstance.PaddingTextfiled(textfield:txtnewpwd)
@@ -137,6 +147,124 @@ class ChangePasswordVC: UIViewController {
         }
         
     }
+    func setrightview(textfield: UITextField)
+    {
+        textfield.contentMode = .scaleAspectFit
+        
+        //        let imageView = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+        //        imageView.isUserInteractionEnabled = true
+        //        imageView.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+        //        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+        //
+        //        view.addSubview(imageView)
+        //        textfield.rightViewMode = UITextFieldViewMode.always
+        //
+        //        textfield.rightView = view
+        
+        if(textfield == txtoldpwd)
+        {
+            
+            imageView3 = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+            imageView3.isUserInteractionEnabled = true
+            imageView3.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+            let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+            
+            view.addSubview(imageView3)
+            textfield.rightViewMode = UITextFieldViewMode.always
+            
+            textfield.rightView = view
+            let T1 = UITapGestureRecognizer()
+            
+            T1.addTarget(self, action: #selector(showpass2))
+            imageView3.addGestureRecognizer(T1)
+        }
+        
+        
+        if(textfield == txtnewpwd)
+        {
+            
+            imageView1 = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+            imageView1.isUserInteractionEnabled = true
+            imageView1.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+            let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+            
+            view.addSubview(imageView1)
+            textfield.rightViewMode = UITextFieldViewMode.always
+            
+            textfield.rightView = view
+            let T1 = UITapGestureRecognizer()
+            
+            T1.addTarget(self, action: #selector(showpass))
+            imageView1.addGestureRecognizer(T1)
+        }
+        if(textfield == txtretypenew)
+        {
+            
+            
+            
+            imageView2 = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+            imageView2.isUserInteractionEnabled = true
+            imageView2.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+            let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+            
+            view.addSubview(imageView2)
+            textfield.rightViewMode = UITextFieldViewMode.always
+            
+            textfield.rightView = view
+            let T1 = UITapGestureRecognizer()
+            
+            T1.addTarget(self, action: #selector(showpass1))
+            imageView2.addGestureRecognizer(T1)
+            
+        }
+        
+    }
+    
+    
+    @objc func showpass()
+    {
+        if(iconClick == true) {
+            imageView1.image = #imageLiteral(resourceName: "eye-solid")
+            txtnewpwd.isSecureTextEntry = false
+            iconClick = false
+        } else {
+            imageView1.image = #imageLiteral(resourceName: "eye-slash-solid")
+            txtnewpwd.isSecureTextEntry = true
+            iconClick = true
+        }
+        
+    }
+    @objc func showpass1()
+    {
+        if(iconClick1 == true) {
+            imageView2.image = #imageLiteral(resourceName: "eye-solid")
+            txtretypenew.isSecureTextEntry = false
+            iconClick1 = false
+        } else {
+            imageView2.image = #imageLiteral(resourceName: "eye-slash-solid")
+            
+            txtretypenew.isSecureTextEntry = true
+            iconClick1 = true
+        }
+        
+    }
+    @objc func showpass2()
+    {
+        if(iconClick2 == true) {
+            imageView3.image = #imageLiteral(resourceName: "eye-solid")
+            txtoldpwd.isSecureTextEntry = false
+            iconClick2 = false
+        } else {
+            imageView3.image = #imageLiteral(resourceName: "eye-slash-solid")
+            
+            txtoldpwd.isSecureTextEntry = true
+            iconClick2 = true
+        }
+        
+    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

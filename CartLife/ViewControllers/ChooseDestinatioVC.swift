@@ -11,8 +11,10 @@ import GooglePlaces
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
-
-
+import Mapbox
+import MapboxCoreNavigation
+import MapboxNavigation
+import MapboxDirections
 
 let SELECTED_COLOR = UIColor(red:0.00, green:0.58, blue:0.59, alpha:1.0)
 
@@ -22,11 +24,13 @@ protocol locationDelegate:class
     func closePlacePicker()
 }
 
-class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate
+class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,UITextViewDelegate
 {
-    
+   
+    var directionsRoute: Route?
     @IBOutlet weak var btnsave: UIButton!
     
+    @IBOutlet var viewrequest: UIView!
     
     @IBOutlet weak var imgpin: UIImageView!
     @IBOutlet weak var btnSet: UIButton!
@@ -43,6 +47,10 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     @IBOutlet weak var txtEndLocation: UITextField!
   
     @IBOutlet weak var tblAutoComplete: UITableView!
+    
+    @IBOutlet weak var txttitle: UITextField!
+    
+    @IBOutlet weak var txtmessage: UITextView!
     
     var currentTxtField = UITextField()
     
@@ -70,28 +78,50 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     var newdestCord = CLLocationCoordinate2D()
    
     @IBOutlet weak var btnnavigate: UIButton!
+    
+    @IBAction func SubmitAction(_ sender: Any) {
+        
+        if(txttitle.text == "")
+        {
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter title")
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else if(txttitle.text == "")
+        {
+            let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"Please enter message")
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            SendRequest()
+        }
+        
+    }
+    
+    
+    @IBAction func closeaction(_ sender: Any) {
+        viewrequest.isHidden = true
+    }
+    
     @IBAction func naviagateaction(_ sender: Any) {
-//        let GoogleUrl = URL(string: "comgooglemaps://?saddr=\(self.newsourceCord.latitude),\(newsourceCord.longitude)&daddr=\(self.newdestCord.latitude),\(self.newdestCord.longitude)&directionsmode=driving")
-//
-//
-//        UIApplication.shared.open(GoogleUrl!, options: [:]) { (booll) in
-//            if booll{
-//                print("opening External Navigaion app")
-//
-//            }else{
-//                let alert = webservices.sharedInstance.AlertBuilder(title: "", message:"Google maps not installed")
-//                self.present(alert, animated: true, completion: nil)
-//
-//            }
-//        }
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigateVC") as! NavigateVC
-        nextViewController.sourceCord = self.newsourceCord
-        nextViewController.destCord = self.newdestCord
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-        
+        if(btnnavigate.imageView?.image == #imageLiteral(resourceName: "navigation"))
+        {
+        calculateRoute(from: newsourceCord, to: newdestCord) { (route, error) in
+        }
+        btnnavigate.setImage(#imageLiteral(resourceName: "plus-circle-solid.png"), for: .normal)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigateVC") as! NavigateVC
+//        nextViewController.sourceCord = self.newsourceCord
+//        nextViewController.destCord = self.newdestCord
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
+        else
+        {
+           viewrequest.isHidden = false
+        }
         
     }
     
@@ -106,6 +136,10 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        txtmessage.text = "Enter Message"
+        txtmessage.textColor = UIColor.lightGray
+
+        txtmessage.delegate = self
         self.placesClient = GMSPlacesClient()
 
         txtStartLocation.clearButtonMode = .whileEditing
@@ -204,8 +238,8 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         let camera = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, zoom: 18);
         self.mapView.camera = camera
-     txtEndLocation.text = ""
-        txtStartLocation.text = ""
+//     txtEndLocation.text = ""
+//        txtStartLocation.text = ""
          sourceCord.latitude = 0.0
         sourceCord.longitude = 0.0
         destCord.latitude = 0.0
@@ -240,7 +274,7 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
 
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let coordinate = mapView.projection.coordinate(for: mapView.center)
-        print("latitude " + "\(coordinate.latitude)" + " longitude " + "\(coordinate.longitude)")
+      //  print("latitude " + "\(coordinate.latitude)" + " longitude " + "\(coordinate.longitude)")
         
         sourceLocation = coordinate
         
@@ -417,6 +451,126 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
             }
         }
     }
+   
+    func SendRequest()
+    {
+        if webservices().isConnectedToNetwork() == true
+        {
+            
+            webservices().StartSpinner()
+            
+            Alamofire.request(webservices().baseurl + "sendnotification", method: .post, parameters:["user_id":UserDefaults.standard.value(forKey: "userid") as! Int,"title":txttitle.text,"message":txtmessage.text] , encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+                
+                switch(response.result) {
+                case .success(_):
+                    
+                    webservices().StopSpinner()
+                    
+                    if let data = response.result.value{
+                        
+                        let dic: NSDictionary = response.result.value as! NSDictionary
+                        
+                        if(dic.value(forKey: "error_code") as! Int == 0)
+                        {
+                            self.viewrequest.isHidden = true
+                            self.txtmessage.text = ""
+                            self.txttitle.text = ""
+                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        else
+                        {
+                            let alert = webservices.sharedInstance.AlertBuilder(title:"", message: dic.value(forKey:"message") as! String)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                    }
+                    break
+                    
+                case .failure(_):
+                    webservices().StopSpinner()
+                    
+                    print(response.result.error)
+                    break
+                    
+                }
+            }
+            
+        }
+        else
+        {
+            webservices.sharedInstance.nointernetconnection()
+        }
+        
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if(textView == txtmessage)
+        {
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            
+            textView.text = "Enter Message"
+            textView.textColor = UIColor.lightGray
+
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+        else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.textColor = UIColor.black
+            textView.text = text
+        }
+            
+            // For every other case, the text should change with the usual
+            // behavior...
+        else {
+            return true
+        }
+        
+        // ...otherwise return false since the updates have already
+        // been made
+        return false
+        }
+        else
+        
+        {
+            return true
+
+        }
+    }
+    
+    
+    // Calculate route to be used for navigation
+    func calculateRoute(from origin: CLLocationCoordinate2D,
+                        to destination: CLLocationCoordinate2D,
+                        completion: @escaping (Route?, Error?) -> ()) {
+        
+        // Coordinate accuracy is the maximum distance away from the waypoint that the route may still be considered viable, measured in meters. Negative values indicate that a indefinite number of meters away from the route and still be considered viable.
+        let origin = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Start")
+        let destination = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Finish")
+        
+        // Specify that the route is intended for automobiles avoiding traffic
+        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
+        
+        // Generate the route object and draw it on the map
+        _ = Directions.shared.calculate(options) { [unowned self] (waypoints, routes, error) in
+            self.directionsRoute = routes?.first
+            // self.drawRoute(route: self.directionsRoute!)
+            let navigationViewController = NavigationViewController(for: self.directionsRoute!)
+            self.present(navigationViewController, animated: true, completion: nil)
+        }
+    }
+    
     func drawPath()
     {
         var sourceMarker = GMSMarker()
@@ -475,11 +629,11 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
                    destMarker.map = self.mapView
                     self.newsourceCord = self.sourceCord
                     self.newdestCord = self.destCord
-
-                    self.sourceCord.latitude = 0.0
-                    self.sourceCord.longitude = 0.0
-                    self.destCord.latitude = 0.0
-                    self.destCord.longitude = 0.0
+//
+//                    self.sourceCord.latitude = 0.0
+//                    self.sourceCord.longitude = 0.0
+//                    self.destCord.latitude = 0.0
+//                    self.destCord.longitude = 0.0
                     
                     
                 }

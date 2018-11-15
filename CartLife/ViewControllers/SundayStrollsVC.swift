@@ -204,7 +204,6 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
                 switch response.result{
                     
                 case .success(let resp):
-                    print(resp)
                     webservices().StopSpinner()
                     if(resp.errorCode == 0)
                     {
@@ -250,7 +249,6 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
                 switch response.result{
                     
                 case .success(let resp):
-                    print(resp)
                     webservices().StopSpinner()
                     if(resp.errorCode == 0)
                     {

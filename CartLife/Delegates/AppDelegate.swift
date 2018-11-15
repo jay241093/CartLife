@@ -71,12 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNs token retrieved: \(deviceToken)")
+        //print("APNs token retrieved: \(deviceToken)")
         Messaging.messaging().apnsToken = deviceToken
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
+     //   print("Firebase registration token: \(fcmToken)")
         let user = UserDefaults.standard
         user.set(fcmToken,forKey:"FcmToken")
         user.synchronize()
@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
     @objc func tokenRefreshNotification(notification: NSNotification) {
         // NOTE: It can be nil here
         let refreshedToken = InstanceID.instanceID().token()
-        print("InstanceID token: \(String(describing: refreshedToken))")
+      //  print("InstanceID token: \(String(describing: refreshedToken))")
         
         connectToFcm()
     }

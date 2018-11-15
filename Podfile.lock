@@ -68,17 +68,34 @@ PODS:
   - GoogleUtilities/Reachability (5.2.2):
     - GoogleUtilities/Logger
   - IQKeyboardManagerSwift (5.0.0)
+  - Mapbox-iOS-SDK (4.2.0)
+  - MapboxCoreNavigation (0.19.2):
+    - MapboxDirections.swift (~> 0.22.0)
+    - MapboxMobileEvents (~> 0.4)
+    - Turf (~> 0.2)
+  - MapboxDirections.swift (0.22.0):
+    - Polyline (~> 4.2)
+  - MapboxMobileEvents (0.4.51)
+  - MapboxNavigation (0.19.2):
+    - Mapbox-iOS-SDK (~> 4.2.0)
+    - MapboxCoreNavigation (= 0.19.2)
+    - MapboxSpeech (~> 0.0.1)
+    - Solar (~> 2.1)
+  - MapboxSpeech (0.0.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - PKHUD (5.1.0)
+  - Polyline (4.2.0)
   - Protobuf (3.6.1)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - Solar (2.1.0)
   - SwiftyJSON (4.1.0)
+  - Turf (0.2.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
@@ -89,6 +106,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces (~> 2.1)
   - IQKeyboardManagerSwift (= 5.0.0)
+  - MapboxNavigation
   - PKHUD
   - SDWebImage (~> 4.0)
   - SwiftyJSON (~> 4.0)
@@ -109,11 +127,20 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleUtilities
     - IQKeyboardManagerSwift
+    - Mapbox-iOS-SDK
+    - MapboxCoreNavigation
+    - MapboxDirections.swift
+    - MapboxMobileEvents
+    - MapboxNavigation
+    - MapboxSpeech
     - nanopb
     - PKHUD
+    - Polyline
     - Protobuf
     - SDWebImage
+    - Solar
     - SwiftyJSON
+    - Turf
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -141,12 +168,21 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
+  Mapbox-iOS-SDK: 706d52e3ad095e16944d9643f37d5a97627f6c19
+  MapboxCoreNavigation: 62f41c5839c08bf95515e80074090a95515c6231
+  MapboxDirections.swift: 67da008c3bff72ab68b0fc166185eebda23303be
+  MapboxMobileEvents: 83ed9a5ea8f81ca455c350cb15f05ce287d5d2a3
+  MapboxNavigation: b3088c11638918f89a6cfdc7fa717a1a5812e4fe
+  MapboxSpeech: 6cc9b3d53adc2988af3ebc704dd17907b84a3f9f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
+  Polyline: 3d69f75bb136357e27291d439d0436c6ebda57a4
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  Turf: 65817136031583da7ea2b43e6611dd10ddbdab2f
 
-PODFILE CHECKSUM: 3995ddfa9b2c5f3d4097fcce37a441b35b3c8118
+PODFILE CHECKSUM: 1240d36957f5c7945d4e23c78700136053080e99
 
 COCOAPODS: 1.5.2

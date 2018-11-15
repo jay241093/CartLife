@@ -18,6 +18,11 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var btncreate: UIButton!
     
     @IBOutlet weak var btnlogin: UIButton!
+    
+    var imageView1  = UIImageView()
+    var iconClick = true
+
+    
     @IBAction func loginaction(_ sender: Any) {
         
         self.navigationController?.popViewController(animated: true)
@@ -67,6 +72,7 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setrightview(textfield: txtpassword)
         btnlogin.layer.shadowColor = UIColor.black.cgColor
         btnlogin.layer.shadowOffset = CGSize(width: 5, height: 5)
         btnlogin.layer.shadowRadius = 5
@@ -175,7 +181,55 @@ class SignUpVC: UIViewController {
         
     }
     
+    func setrightview(textfield: UITextField)
+    {
+        textfield.contentMode = .scaleAspectFit
+        
+        //        let imageView = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid"))
+        //        imageView.isUserInteractionEnabled = true
+        //        imageView.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+        //        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+        //
+        //        view.addSubview(imageView)
+        //        textfield.rightViewMode = UITextFieldViewMode.always
+        //
+        //        textfield.rightView = view
+        if(textfield == txtpassword)
+        {
+            
+            imageView1 = UIImageView.init(image: #imageLiteral(resourceName: "eye-slash-solid (2)"))
+            imageView1.isUserInteractionEnabled = true
+            imageView1.frame = CGRect(x: 10, y: 0, width: 30, height: 30)
+            let view = UIView.init(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
+            
+            view.addSubview(imageView1)
+            textfield.rightViewMode = UITextFieldViewMode.always
+            
+            textfield.rightView = view
+            let T1 = UITapGestureRecognizer()
+            
+            T1.addTarget(self, action: #selector(showpass))
+            imageView1.addGestureRecognizer(T1)
+        }
+      
+        
+    }
     
+    
+    @objc func showpass()
+    {
+        if(iconClick == true) {
+            imageView1.image = #imageLiteral(resourceName: "eye-solid (1)")
+            txtpassword.isSecureTextEntry = false
+            iconClick = false
+        } else {
+            imageView1.image = #imageLiteral(resourceName: "eye-slash-solid (2)")
+            txtpassword.isSecureTextEntry = true
+            iconClick = true
+        }
+        
+    }
+  
     
     // MARK: - User Define Functions
     

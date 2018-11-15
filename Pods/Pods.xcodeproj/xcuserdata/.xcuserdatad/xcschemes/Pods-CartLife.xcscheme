@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1EF138FDEC17C89DECE3177996B6DE95"
+               BlueprintIdentifier = "3CBE115D0F54ECAD718456DD9B18EC7F"
                BlueprintName = "Pods-CartLife"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Pods-CartLife.framework">
