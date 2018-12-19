@@ -113,7 +113,6 @@ GetServiceproviders()
         }
         else
         {
-            
             webservices.sharedInstance.nointernetconnection()
             NSLog("No Internet Connection")
         }

@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirLTStd-Medium.otf">
+            <string>AvenirLTStd-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
@@ -1152,7 +1157,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday strolls - My saves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHh-My-vik">
                                                     <rect key="frame" x="57" y="12" width="190" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1187,7 +1192,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X44-kh-29R">
                                                     <rect key="frame" x="57" y="11" width="137" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1218,7 +1223,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Golf Cart Rules &amp; Tips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL0-7v-tPA">
                                                     <rect key="frame" x="57" y="11" width="175" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1255,7 +1260,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="BhV-cg-e5B"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1288,7 +1293,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="XjH-Jl-ZSc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1324,7 +1329,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3Dn-Eh-P7j"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1357,7 +1362,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-BN-cwZ">
                                                     <rect key="frame" x="57" y="11" width="137" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1391,7 +1396,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnt-WF-nhY">
                                                     <rect key="frame" x="57" y="11" width="137" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1944,10 +1949,21 @@
                                     <constraint firstAttribute="height" constant="60" id="wvV-6Q-uhW"/>
                                 </constraints>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Routes Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-nP-hmc">
+                                <rect key="frame" x="50" y="267" width="259" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Sa9-Lg-xz3"/>
+                                    <constraint firstAttribute="width" constant="259" id="U1g-Rz-WOR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirLTStd-Medium" family="Avenir LT Std" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="z8I-tK-Te0" firstAttribute="leading" secondItem="ZFK-uK-sUX" secondAttribute="leading" id="0Db-Nm-2BR"/>
+                            <constraint firstItem="yWd-nP-hmc" firstAttribute="centerX" secondItem="b0E-1o-Xzz" secondAttribute="centerX" constant="19.5" id="0FA-GE-l5m"/>
                             <constraint firstItem="J3b-Tp-h1X" firstAttribute="top" secondItem="z8I-tK-Te0" secondAttribute="bottom" constant="8" id="0tW-w9-z9g"/>
                             <constraint firstItem="ZFK-uK-sUX" firstAttribute="top" secondItem="J3b-Tp-h1X" secondAttribute="bottom" constant="6" id="7yD-bK-ArT"/>
                             <constraint firstItem="z8I-tK-Te0" firstAttribute="top" secondItem="dfi-FZ-c6g" secondAttribute="bottom" id="Cto-9I-6gW"/>
@@ -1957,11 +1973,13 @@
                             <constraint firstItem="ZFK-uK-sUX" firstAttribute="bottom" secondItem="Z9G-Vn-bK2" secondAttribute="top" id="PVg-nO-I0W"/>
                             <constraint firstItem="z8I-tK-Te0" firstAttribute="trailing" secondItem="ZFK-uK-sUX" secondAttribute="trailing" id="aPx-ru-zjX"/>
                             <constraint firstItem="J3b-Tp-h1X" firstAttribute="leading" secondItem="b0E-1o-Xzz" secondAttribute="leading" constant="10" id="euU-54-iO0"/>
+                            <constraint firstItem="yWd-nP-hmc" firstAttribute="centerY" secondItem="b0E-1o-Xzz" secondAttribute="centerY" constant="20.5" id="sOG-ZT-REW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnsave" destination="hJ6-tU-tiZ" id="Huh-t4-F5w"/>
                         <outlet property="btnstrolls" destination="GRQ-6d-rCG" id="hrs-sZ-liS"/>
+                        <outlet property="lblnoroute" destination="yWd-nP-hmc" id="yAt-2s-95a"/>
                         <outlet property="mainview" destination="z8I-tK-Te0" id="Xt2-gi-c7z"/>
                         <outlet property="tblview" destination="ZFK-uK-sUX" id="YZT-Xv-iY4"/>
                     </connections>

@@ -46,6 +46,8 @@
 		3847103648FA38D44593B4E0 /* Pods_CartLifeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F703413BD30C771953EE980 /* Pods_CartLifeTests.framework */; };
 		5087A8A75FB7C3BF834F39EE /* Pods_CartLifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F2A0559BEB26DFF79F7049 /* Pods_CartLifeUITests.framework */; };
 		75738B5883F8FD84DE948E81 /* Pods_CartLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0566EDA6C7F3C0BCCBFE972 /* Pods_CartLife.framework */; };
+		9AE98E5221B01C4900248E46 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE98E5021B01C4500248E46 /* CityCell.swift */; };
+		9AE98E5321B01C4900248E46 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE98E5121B01C4900248E46 /* CityCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		55DA6A097746A904DB861A34 /* Pods-CartLifeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartLifeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CartLifeTests/Pods-CartLifeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CD3D6BA96F1F48D126D7735 /* Pods-CartLifeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartLifeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CartLifeUITests/Pods-CartLifeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F703413BD30C771953EE980 /* Pods_CartLifeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CartLifeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE98E5021B01C4500248E46 /* CityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		9AE98E5121B01C4900248E46 /* CityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		B3F2A0559BEB26DFF79F7049 /* Pods_CartLifeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CartLifeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D446B4F6DE07BF5822FD625F /* Pods-CartLifeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartLifeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CartLifeTests/Pods-CartLifeTests.release.xcconfig"; sourceTree = "<group>"; };
 		D527A70757DF8D9EE18D217E /* Pods-CartLifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CartLifeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CartLifeUITests/Pods-CartLifeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 		2187B2A921511F9B00868710 /* TableviewCells */ = {
 			isa = PBXGroup;
 			children = (
+				9AE98E5021B01C4500248E46 /* CityCell.swift */,
+				9AE98E5121B01C4900248E46 /* CityCell.xib */,
 				2187B2AA21511FB800868710 /* setLocationCell.swift */,
 				21282ABD21522DD600840B35 /* ServiceProviderCell.swift */,
 				21FB71C1217DE96900930D04 /* SaveRoutesCell.swift */,
@@ -427,6 +433,7 @@
 				214DE4DD217F1BA200C17CE2 /* GoogleService-Info.plist in Resources */,
 				214DE4B4217EF07D00C17CE2 /* SnellRoundhand-BoldScript.otf in Resources */,
 				2187B2982150BADD00868710 /* AvenirLTStd-Book.otf in Resources */,
+				9AE98E5321B01C4900248E46 /* CityCell.xib in Resources */,
 				2187B2992150BADD00868710 /* AvenirLTStd-Medium.otf in Resources */,
 				2187B29A2150BADD00868710 /* AvenirLTStd-Roman.otf in Resources */,
 				2187B26B2150B70C00868710 /* LaunchScreen.storyboard in Resources */,
@@ -607,6 +614,7 @@
 				21385F392154C938008D1061 /* LoginResponse.swift in Sources */,
 				2187B2612150B70900868710 /* AppDelegate.swift in Sources */,
 				2187B2A421510AA000868710 /* SideMenuVc.swift in Sources */,
+				9AE98E5221B01C4900248E46 /* CityCell.swift in Sources */,
 				21282AC42152638C00840B35 /* SundayStrollsVC.swift in Sources */,
 				2187B29C2150CDBD00868710 /* LoginVC.swift in Sources */,
 				21282ABC215226DE00840B35 /* ServiceProviderVC.swift in Sources */,

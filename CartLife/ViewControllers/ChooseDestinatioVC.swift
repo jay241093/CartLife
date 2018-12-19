@@ -24,7 +24,7 @@ protocol locationDelegate:class
     func closePlacePicker()
 }
 
-class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,UITextViewDelegate
+class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate,UITextViewDelegate,MGLMapViewDelegate
 {
    
     var directionsRoute: Route?
@@ -67,7 +67,7 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     var isTxtSourceFilled = false
     var isTxtDestFilled = false
     
-    weak var  locDelegate:locationDelegate?
+    weak var locDelegate:locationDelegate?
     var sourceLocation = CLLocationCoordinate2D()
     var sourcePlace = String()
     var destPlace = String()
@@ -108,15 +108,12 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
         
         if(btnnavigate.imageView?.image == #imageLiteral(resourceName: "navigation"))
         {
-        calculateRoute(from: newsourceCord, to: newdestCord) { (route, error) in
-        }
+       
+            if let url = URL(string: "comgooglemaps://?saddr=\(newsourceCord.latitude),\(newsourceCord.longitude)&daddr=\(newdestCord.latitude),\(newdestCord.longitude)&directionsmode=bycycling") {
+                UIApplication.shared.open(url, options: [:])
+            }
         btnnavigate.setImage(#imageLiteral(resourceName: "plus-circle-solid.png"), for: .normal)
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigateVC") as! NavigateVC
-//        nextViewController.sourceCord = self.newsourceCord
-//        nextViewController.destCord = self.newdestCord
-//        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
         }
         else
         {
@@ -164,7 +161,34 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
         
         self.setupView()
 
+        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let camera = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, zoom: 18);
+     //   self.mapView.camera = camera
+        //     txtEndLocation.text = ""
+        //        txtStartLocation.text = ""
+        sourceCord.latitude = 0.0
+        sourceCord.longitude = 0.0
+        destCord.latitude = 0.0
+        destCord.longitude = 0.0
         
+        let geocoder = GMSGeocoder()
+        
+        let newloc = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        
+        
+        geocoder.reverseGeocodeCoordinate(newloc) { response , error in
+            
+            //Add this line
+            if let address = response!.firstResult() {
+                let lines = address.lines! as [String]
+                
+                //self.txtStartLocation.text = lines[0] + "," + lines[1]
+            }
+        }
+        self.getAddressFromGeocodeCoordinate(coordinate: newloc)
+        self.currentTxtField = txtStartLocation
+        isTxtSource = true
+        isTxtDest = false
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
@@ -175,10 +199,8 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
     {
         let userLocation = locations.last
 
+        
         self.mapView.delegate = self
-
-        self.mapView.isMyLocationEnabled = true
-
         let geocoder = GMSGeocoder()
 
     }
@@ -235,35 +257,8 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
 //    }
     
     override func viewWillAppear(_ animated: Bool) {
-        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        let camera = GMSCameraPosition.camera(withLatitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude, zoom: 18);
-        self.mapView.camera = camera
-//     txtEndLocation.text = ""
-//        txtStartLocation.text = ""
-         sourceCord.latitude = 0.0
-        sourceCord.longitude = 0.0
-        destCord.latitude = 0.0
-        destCord.longitude = 0.0
-
-        let geocoder = GMSGeocoder()
-        
-        let newloc = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        
-        
-        geocoder.reverseGeocodeCoordinate(newloc) { response , error in
-            
-            //Add this line
-            if let address = response!.firstResult() {
-                let lines = address.lines! as [String]
-                
-                //self.txtStartLocation.text = lines[0] + "," + lines[1]
-            }
-        }
-        self.getAddressFromGeocodeCoordinate(coordinate: newloc)
-        self.currentTxtField = txtStartLocation
-        isTxtSource = true
-        isTxtDest = false
-       
+     
+       btnnavigate.setImage(#imageLiteral(resourceName: "navigation"), for: .normal)
     }
 
     override func didReceiveMemoryWarning()
@@ -566,19 +561,92 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
         _ = Directions.shared.calculate(options) { [unowned self] (waypoints, routes, error) in
             self.directionsRoute = routes?.first
             // self.drawRoute(route: self.directionsRoute!)
-            let navigationViewController = NavigationViewController(for: self.directionsRoute!)
-            self.present(navigationViewController, animated: true, completion: nil)
+            let origin = Waypoint(coordinate:self.newsourceCord, name: "")
+            let destination = Waypoint(coordinate:self.newdestCord, name: "")
+            
+            let options =  RouteOptions(coordinates: [self.newsourceCord,self.newdestCord], profileIdentifier:  MBDirectionsProfileIdentifier.walking)
+            options.routeShapeResolution = .full
+            options.includesSteps = true
+     
+            Directions.shared.calculate(options) { (waypoints, routes, error) in
+                guard let route = routes?.first else { return }
+                
+                let viewController = NavigationViewController(for: route)
+                self.present(viewController, animated: true, completion: nil)
+            }
+            
+            
         }
     }
     
+  var routeLine = MGLPolyline()
+    
     func drawPath()
     {
+//        mapView.removeAnnotation(routeLine)
+//
+//
+//           let wp1 = Waypoint(coordinate: self.sourceCord)
+//            let wp2 = Waypoint(coordinate:self.destCord)
+//            var options = RouteOptions(waypoints:[])
+//             options = RouteOptions(waypoints: [wp1, wp2])
+//            options.includesSteps = true
+//
+//            Directions(accessToken:"pk.eyJ1IjoicHJpeWFua2EtaW5ub3ZpdXMiLCJhIjoiY2pudmRlZWF1MGNzZTNxbzB3enNncGl2bSJ9.K-ybnKyDFRbauri5I6aosA").calculate(options) { (waypoints, routes, error) in
+//                guard error == nil else {
+//                    print("Error calculating directions: \(error!)")
+//                    return
+//                }
+//
+//                if let route = routes?.first, let leg = route.legs.first {
+//                    print("Route via \(leg):")
+//
+//                    let distanceFormatter = LengthFormatter()
+//                    let formattedDistance = distanceFormatter.string(fromMeters: route.distance)
+//
+//                    let travelTimeFormatter = DateComponentsFormatter()
+//                    travelTimeFormatter.unitsStyle = .short
+//                    let formattedTravelTime = travelTimeFormatter.string(from: route.expectedTravelTime)
+//
+//                    print("Distance: \(formattedDistance); ETA: \(formattedTravelTime!)")
+//
+//                    for step in leg.steps {
+//                        print("\(step.instructions)")
+//                        if step.distance > 0 {
+//                            let formattedDistance = distanceFormatter.string(fromMeters: step.distance)
+//                            print("— \(formattedDistance) —")
+//                        }
+//                    }
+//                    self.newsourceCord = self.sourceCord
+//                    self.newdestCord = self.destCord
+//                    if route.coordinateCount > 0 {
+//
+//
+//
+//                        // Convert the route’s coordinates into a polyline.
+//                        var routeCoordinates = route.coordinates!
+//
+//                        self.routeLine = MGLPolyline(coordinates: &routeCoordinates, count: route.coordinateCount)
+//
+//                        // Add the polyline to the map and fit the viewport to the polyline.
+//                        self.mapView.addAnnotation(self.routeLine)
+//                        self.mapView.setVisibleCoordinates(&routeCoordinates, count: route.coordinateCount, edgePadding: .zero, animated: true)
+//
+//
+//                    }
+//                }
+//            }
+//
+//
         var sourceMarker = GMSMarker()
         var destMarker = GMSMarker()
-        
+
         let origin = "\(self.sourceCord.latitude),\(self.sourceCord.longitude)"
         let destination = "\(self.destCord.latitude),\(self.destCord.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&units=imperial&key=AIzaSyC2k9gtTgJxihdaJQ99T7tSs77b_fPA3l0"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&sensor=false&mode=bicycling&key=AIzaSyC2k9gtTgJxihdaJQ99T7tSs77b_fPA3l0"
+        
+        
+        
         
         Alamofire.request(url).responseJSON { response in
             print(response.request ?? "")  // original URL request
@@ -587,9 +655,9 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
             print(response.result)   // result of response serialization
             do {
                 let json = try JSON(data: response.data!)
-                
+
                 let routes = json["routes"].arrayValue
-                
+
                 self.mapView.clear()
 
                 for route in routes
@@ -601,50 +669,47 @@ class ChooseDestinatioVC: UIViewController, CLLocationManagerDelegate, GMSMapVie
                     polyline.strokeWidth = 3.0
                     polyline.strokeColor = UIColor(red:0.00, green:0.69, blue:1.00, alpha:1.0)
                     polyline.map = self.mapView
-                    
-                    
                     let legs = route["legs"]
-                    
+
                     let firstLeg = legs[0]
-                    
+
                     let firstLegDurationDict = firstLeg["duration"]
                     let firstLegDuration = firstLegDurationDict["text"]
-                    
+
                     let firstLegDistanceDict = firstLeg["distance"]
                     let firstLegDistance = firstLegDistanceDict["text"]
-                    
+
                     var bounds = GMSCoordinateBounds()
-                    
+
                     bounds = bounds.includingCoordinate(self.sourceCord)
                     bounds = bounds.includingCoordinate(self.destCord)
                     let update = GMSCameraUpdate.fit(bounds, withPadding: 130)
                     self.mapView.animate(with: update)
-                    
+
                    sourceMarker.title = self.txtStartLocation.text!
                     sourceMarker.position = CLLocationCoordinate2D(latitude: self.sourceCord.latitude, longitude: self.sourceCord.longitude)
                     sourceMarker.map = self.mapView
-                
+
                    destMarker.title = self.txtEndLocation.text!
                     destMarker.position = CLLocationCoordinate2D(latitude: self.destCord.latitude, longitude: self.destCord.longitude)
                    destMarker.map = self.mapView
                     self.newsourceCord = self.sourceCord
                     self.newdestCord = self.destCord
-//
-//                    self.sourceCord.latitude = 0.0
-//                    self.sourceCord.longitude = 0.0
-//                    self.destCord.latitude = 0.0
-//                    self.destCord.longitude = 0.0
-                    
-                    
+
+              
+
+
                 }
             }
             catch _ {
                 let alert = webservices.sharedInstance.AlertBuilder(title:"", message:"no routes founds")
                 self.present(alert, animated: true, completion: nil)
             }
-            
-           
+
+
         }
+    
+    
     }
     
     func saveroute(latitude:String,longitude:String)
@@ -745,12 +810,14 @@ extension ChooseDestinatioVC:UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
+        
+        btnnavigate.setImage(#imageLiteral(resourceName: "navigation"), for:.normal)
         parentMapView.isUserInteractionEnabled = false
         
         parentMapView.isHidden = true
         self.imgpin.isHidden = false
         self.btnSet.isHidden = false
-        self.mapView.clear()
+        //self.mapView.clear()
     
 
         self.tblAutoComplete.isHidden = false

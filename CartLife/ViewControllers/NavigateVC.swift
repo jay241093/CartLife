@@ -102,12 +102,12 @@ class NavigateVC: UIViewController, CLLocationManagerDelegate, UITextViewDelegat
         if(isfromsave == 1)
         {
       
-lbltime.isHidden = true
+      //lbltime.isHidden = true
         }
         else
         {
             setLocation()
-            lbltime.isHidden = false
+        //    lbltime.isHidden = false
             scheduledTimerWithTimeInterval()
         }
         
@@ -122,15 +122,11 @@ lbltime.isHidden = true
         
         if(btnnavigate.imageView?.image == #imageLiteral(resourceName: "navigation"))
         {
-            calculateRoute(from: sourceCord, to: destCord) { (route, error) in
+            btnnavigate.setImage(#imageLiteral(resourceName: "plus-circle-solid.png"), for:.normal)
+
+            if let url = URL(string: "comgooglemaps://?saddr=\(sourceCord.latitude),\(sourceCord.longitude)&daddr=\(destCord.latitude),\(destCord.longitude)&directionsmode=bycycling") {
+                UIApplication.shared.open(url, options: [:])
             }
-            btnnavigate.setImage(#imageLiteral(resourceName: "plus-circle-solid.png"), for: .normal)
-            //        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            //
-            //        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NavigateVC") as! NavigateVC
-            //        nextViewController.sourceCord = self.newsourceCord
-            //        nextViewController.destCord = self.newdestCord
-            //        self.navigationController?.pushViewController(nextViewController, animated: true)
         }
         else
         {
@@ -190,11 +186,11 @@ lbltime.isHidden = true
     //MARK: - user define Methods
     func setLocation()
     {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestAlwaysAuthorization()
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.startUpdatingLocation()
     }
     func showLocationDisabledpopUp() {
         let alertController = UIAlertController(title: "Location Access  Disabled", message: "We need your location", preferredStyle: .alert)
@@ -235,8 +231,8 @@ lbltime.isHidden = true
         
         let origin = "\(self.sourceCord.latitude),\(self.sourceCord.longitude)"
         let destination = "\(self.destCord.latitude),\(self.destCord.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&units=imperial&key=AIzaSyC2k9gtTgJxihdaJQ99T7tSs77b_fPA3l0"
-        
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&sensor=false&mode=bicycling&key=AIzaSyC2k9gtTgJxihdaJQ99T7tSs77b_fPA3l0"
+
         Alamofire.request(url).responseJSON { response in
             print(response.request ?? "")  // original URL request
             print(response.response ?? "") // HTTP URL response
@@ -270,8 +266,6 @@ lbltime.isHidden = true
                     let firstLegDistanceDict = firstLeg["distance"]
                     let firstLegDistance = firstLegDistanceDict["text"]
                     
-                    self.lbltime.text = String(describing: firstLegDuration)
-
                     var bounds = GMSCoordinateBounds()
                     
                     bounds = bounds.includingCoordinate(self.sourceCord)
@@ -352,19 +346,19 @@ lbltime.isHidden = true
                         completion: @escaping (Route?, Error?) -> ()) {
         
         // Coordinate accuracy is the maximum distance away from the waypoint that the route may still be considered viable, measured in meters. Negative values indicate that a indefinite number of meters away from the route and still be considered viable.
-        let origin = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Start")
-        let destination = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Finish")
+        let options =  RouteOptions(coordinates: [origin,destination], profileIdentifier:  MBDirectionsProfileIdentifier.walking)
+        options.routeShapeResolution = .full
+        options.includesSteps = true
         
-        // Specify that the route is intended for automobiles avoiding traffic
-        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
-        // Generate the route object and draw it on the map
-        _ = Directions.shared.calculate(options) { [unowned self] (waypoints, routes, error) in
-            self.directionsRoute = routes?.first
-           // self.drawRoute(route: self.directionsRoute!)
-            let navigationViewController = NavigationViewController(for: self.directionsRoute!)
-            self.present(navigationViewController, animated: true, completion: nil)
+        Directions.shared.calculate(options) { (waypoints, routes, error) in
+            guard let route = routes?.first else { return }
+            
+            let viewController = NavigationViewController(for: route)
+            self.present(viewController, animated: true, completion: nil)
         }
+        
     }
+
     /*
     // MARK: - Navigation
 

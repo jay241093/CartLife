@@ -20,12 +20,9 @@ class SideMenuVc: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var txtname: UILabel!
     
-    
-    
-    @IBAction func TapViewAction(_ sender: Any) {
-        
+     @IBAction func TapViewAction(_ sender: Any) {
+     
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }

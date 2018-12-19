@@ -16,9 +16,11 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     @IBOutlet weak var btnsave: UIButton!
     
+    
     var sundaystrollsary = [Datum]()
     var mysaveary = [Datum1]()
 
+    @IBOutlet weak var lblnoroute: UILabel!
     
     var isfrom = 0
     
@@ -26,14 +28,23 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     @IBAction func sundaystrollsaction(_ sender: Any) {
         
         isfrom = 0
-        
+        self.lblnoroute.isHidden = true
         tblview.reloadData()
         
     }
     
     @IBAction func saveactions(_ sender: Any) {
         isfrom = 1
-        tblview.reloadData()
+        if(mysaveary.count == 0)
+        {
+        self.lblnoroute.isHidden = false
+        }
+        else
+        {
+            self.lblnoroute.isHidden = true
+
+        }
+         tblview.reloadData()
     }
     
     
@@ -48,6 +59,9 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         super.viewDidLoad()
         
         webservices.sharedInstance.setShadow(view: mainview)
+        webservices.sharedInstance.setShadow(view: btnsave)
+        webservices.sharedInstance.setShadow(view: btnstrolls)
+
       GetSundayStrolls()
          Mysaves()
         // Do any additional setup after loading the view.
@@ -107,16 +121,38 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             var fullName: String =  dic.from
 
             var fullNameArr = fullName.components(separatedBy:"-")
+            var firstName: NSString = ""
+            var lastName: NSString = ""
             
-            var firstName: NSString = fullNameArr[0] as NSString
-            var lastName: NSString = fullNameArr[1] as NSString
+            if(fullNameArr.count == 3)
+            {
+                firstName = fullNameArr[0] as NSString
+                lastName =  "-" + fullNameArr[2] as NSString
+            }
+            else
+            {
+                firstName = fullNameArr[0] as NSString
+                lastName =  fullNameArr[1] as NSString
+                
+            }
             
             var fullName1: String =  dic.to
             
             var fullNameArr1 = fullName1.components(separatedBy:"-")
+            var firstName1: NSString = ""
+            var lastName1: NSString = ""
             
-            var firstName1: NSString = fullNameArr1[0] as NSString
-            var lastName1: NSString = fullNameArr1[1] as NSString
+            if(fullNameArr1.count == 3)
+            {
+                firstName1 = fullNameArr1[0] as NSString
+                lastName1 =  "-" + fullNameArr1[2] as NSString
+            }
+            else
+            {
+                firstName1 = fullNameArr1[0] as NSString
+                lastName1 =  fullNameArr1[1] as NSString
+                
+            }
             
             let newloc = CLLocationCoordinate2D(latitude:firstName.doubleValue, longitude:lastName.doubleValue)
             
@@ -156,18 +192,43 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             let geocoder = GMSGeocoder()
             var fullName: String =  dic.from
             
-            var fullNameArr = fullName.components(separatedBy:"-")
+            var firstName: NSString = ""
+            var lastName: NSString = ""
             
-            var firstName: NSString = fullNameArr[0] as NSString
-            var lastName: NSString = fullNameArr[1] as NSString
+            var fullNameArr = fullName.components(separatedBy:"-")
+            if(fullNameArr.count == 3)
+            {
+                firstName = fullNameArr[0] as NSString
+                lastName =  "-" + fullNameArr[2] as NSString
+            }
+            else
+            {
+                firstName = fullNameArr[0] as NSString
+                lastName =  fullNameArr[1] as NSString
+                
+            }
+            
             
             var fullName1: String =  dic.to
             
             var fullNameArr1 = fullName1.components(separatedBy:"-")
-            
-            var firstName1: NSString = fullNameArr1[0] as NSString
-            var lastName1: NSString = fullNameArr1[1] as NSString
-            
+            var firstName1: NSString = ""
+            var lastName1: NSString = ""
+
+            if(fullNameArr1.count == 3)
+            {
+             firstName1 = fullNameArr1[0] as NSString
+             lastName1 =  "-" + fullNameArr1[2] as NSString
+            }
+            else
+            {
+                firstName1 = fullNameArr1[0] as NSString
+                lastName1 =  fullNameArr1[1] as NSString
+
+            }
+            print(firstName1)
+            print(lastName1)
+
             let newloc = CLLocationCoordinate2D(latitude:firstName.doubleValue, longitude:lastName.doubleValue)
             
             let newloc1 = CLLocationCoordinate2D(latitude:firstName1.doubleValue, longitude:lastName1.doubleValue)
@@ -178,8 +239,6 @@ class SundayStrollsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
             nextViewController.sourceCord = newloc
             nextViewController.destCord = newloc1
             self.navigationController?.pushViewController(nextViewController, animated: true)
-            
-
             
         }
         
